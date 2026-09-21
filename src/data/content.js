@@ -18,7 +18,7 @@ export const META = {
 export const PROFILE = {
   name: 'Mr. Xu',
   initials: 'XU',
-  role: '全平台电商运营 · 结构化 Skill 工程',
+  role: '国内电商运营 · 结构化 Skill 工程',
   status: 'OPEN TO COLLABORATION',
   tagline: [
     '把运营经验写成可复用的 Skill。',
@@ -26,14 +26,11 @@ export const PROFILE = {
     '让工具加速思考，而不是替代思考。'
   ],
   intro:
-    '我把电商运营里反复出现的判断，沉淀成 6 个边界清晰的能力包：先做诊断、再给方案，覆盖国内与跨境主流平台的选品定价、冷启动、投流操盘、利润与合规。',
+    '我把电商运营里反复出现的判断，沉淀成 4 个边界清晰的能力包：先做诊断、再给方案，覆盖天猫 / 拼多多 / 京东 / 抖音千川四个国内平台的选品定价、冷启动、投流操盘、利润与合规。',
   location: '中国',
   email: 'xupa5905@gmail.com',
-  stats: [
-    { value: 6, suffix: '', label: '在维护的 Skill' },
-    { value: 6, suffix: '', label: '覆盖电商平台' },
-    { value: 1567, suffix: 'KB', label: '能力包总体量' }
-  ],
+  // stats 在下方由 SKILLS 的真实字段推导后回填（见「首页数字」一节），此处不写死
+  stats: [],
   links: [
     { label: '邮箱', href: 'mailto:xupa5905@gmail.com', icon: 'mail' },
     { label: '更多', href: '#contact', icon: 'link' }
@@ -56,32 +53,12 @@ export const NAV = [
  */
 export const SKILLS = [
   {
-    id: 'tiktok-shop',
-    name: 'TikTok Shop 跨境运营专家',
-    short: 'TikTok',
-    icon: 'globe',
-    group: '跨境电商',
-    version: '0.2.0',
-    size: 242,
-    structure: '结构 1',
-    structFiles: 1,
-    role: '选品定价 · 冷启动 · 内容投流 · 达人联盟 · 履约合规',
-    desc: '先按国家 / 主体 / 店型 / 阶段 / 证据时效五个维度做诊断，再给可执行方案，覆盖选品定价、利润测算、冷启动、短视频与直播、达人联盟、GMV Max 与履约合规全链路。',
-    highlights: [
-      '真人种草视频的卖点证据提取',
-      '泰国 / 美国市场的结构化改编',
-      'GMV Max 与达人联盟投放协同'
-    ],
-    tags: ['跨境电商', '选品定价', '达人联盟', 'GMV Max'],
-    level: 20,
-    usage: '诊断 → 方案 → 证据核验'
-  },
-  {
     id: 'tmall',
     name: '天猫店铺运营专家',
     short: '天猫',
     icon: 'chart',
     group: '国内电商',
+    category: '店铺运营',
     version: '0.5.0',
     size: 249,
     structure: '结构 1-6',
@@ -104,6 +81,7 @@ export const SKILLS = [
     short: '拼多多',
     icon: 'bolt',
     group: '国内电商',
+    category: '店铺运营',
     version: '0.2.0',
     size: 143,
     structure: '结构 1-4',
@@ -126,6 +104,7 @@ export const SKILLS = [
     short: '京东',
     icon: 'shield',
     group: '国内电商',
+    category: '店铺运营',
     version: '0.2.0',
     size: 304,
     structure: '结构 1-5',
@@ -148,6 +127,7 @@ export const SKILLS = [
     short: '千川',
     icon: 'bot',
     group: '国内电商',
+    category: '投流操盘',
     version: '0.2.0',
     size: 375,
     structure: '结构 1-1',
@@ -163,28 +143,6 @@ export const SKILLS = [
     tags: ['净成交 ROI', '官方 API', '受控执行', '幂等回读'],
     level: 20,
     usage: '取数核验 → 策略 → 幂等回读'
-  },
-  {
-    id: 'amazon',
-    name: '亚马逊运营专家',
-    short: '亚马逊',
-    icon: 'cube',
-    group: '跨境电商',
-    version: '0.1.0',
-    size: 254,
-    structure: '结构 1-7',
-    structFiles: 7,
-    role: '真实利润 · 账号安全 · 全链路',
-    desc: '以真实利润与账号安全为核心，覆盖店铺诊断、市场选品、评论 VOC、Listing 转化、付费广告、利润库存、账号健康与数据采集。',
-    highlights: [
-      '店铺诊断 + 市场选品',
-      '评论 VOC + Listing 转化',
-      '付费广告 + 利润库存',
-      '账号健康 + 数据采集'
-    ],
-    tags: ['真实利润', '账号安全', 'VOC', 'Listing'],
-    level: 10,
-    usage: '诊断 → 选品 → 转化 → 健康度'
   }
 ];
 
@@ -192,8 +150,32 @@ const TOTAL_KB = SKILLS.reduce((a, s) => a + s.size, 0);
 const TOTAL_STRUCT = SKILLS.reduce((a, s) => a + s.structFiles, 0);
 const PLATFORMS = SKILLS.length;
 
+/** 按 group 统计（国内电商 / 跨境电商等），供看板提示文案自动生成 */
+const GROUP_COUNTS = SKILLS.reduce((acc, s) => {
+  acc[s.group] = (acc[s.group] || 0) + 1;
+  return acc;
+}, {});
+const GROUP_HINT = Object.keys(GROUP_COUNTS)
+  .map((g) => g + ' ' + GROUP_COUNTS[g])
+  .join(' · ');
+
+/** 按 category 统计（店铺运营 / 投流操盘…），供环形图自动生成 */
+const CATEGORIES = SKILLS.reduce((acc, s) => {
+  const hit = acc.find((c) => c.label === s.category);
+  if (hit) hit.value += 1;
+  else acc.push({ label: s.category, value: 1 });
+  return acc;
+}, []);
+
+/* ---------- 首页数字：全部由 SKILLS 真实字段推导，改能力包自动同步 ---------- */
+PROFILE.stats = [
+  { value: SKILLS.length, suffix: '', label: '在维护的 Skill' },
+  { value: PLATFORMS, suffix: '', label: '覆盖电商平台' },
+  { value: TOTAL_KB, suffix: 'KB', label: '能力包总体量' }
+];
+
 /**
- * 运行机制 —— 6 个能力包共享的、反复出现的判断动作。
+ * 运行机制 —— 各能力包共享的、反复出现的判断动作。
  * 全部从 SKILLS 里真实存在的机制提炼，不含虚构条目。
  * group 用于筛选：口径 / 流程 / 复盘
  */
@@ -204,10 +186,10 @@ export const MECHANISMS = [
     icon: 'target',
     group: '口径',
     summary: '所有能力包都以真实利润为第一口径，而不是 GMV 或成交额。口径不统一时，后面的优化全是错的。',
-    scope: '适用于全部 6 个能力包',
+    scope: '适用于全部 ' + PLATFORMS + ' 个能力包',
     tags: ['真实利润', '退款后利润', '净成交 ROI'],
     metrics: [
-      { label: '覆盖', value: '6 / 6 个包' },
+      { label: '覆盖', value: PLATFORMS + ' / ' + PLATFORMS + ' 个包' },
       { label: '首要指标', value: '真实利润' }
     ]
   },
@@ -216,12 +198,12 @@ export const MECHANISMS = [
     name: '先诊断，再给动作',
     icon: 'search',
     group: '流程',
-    summary: '不直接给方案。先用固定维度做一次诊断，再据此推导动作 —— TikTok Shop 用国家 / 主体 / 店型 / 阶段 / 证据时效五个维度。',
-    scope: 'TikTok Shop 五维诊断 · 亚马逊店铺诊断 · 拼多多跨域诊断 · 京东合规诊断',
-    tags: ['五维诊断', '店铺诊断', '跨域诊断'],
+    summary: '不直接给方案。先用固定维度做一次诊断，再据此推导动作 —— 拼多多按跨域维度诊断，京东按合规维度诊断，诊断结论决定后面所有动作。',
+    scope: '拼多多跨域诊断 · 京东合规诊断',
+    tags: ['跨域诊断', '合规诊断', '诊断先于动作'],
     metrics: [
-      { label: '诊断维度', value: '5 个' },
-      { label: '覆盖', value: '4 个包' }
+      { label: '顺序', value: '诊断先于动作' },
+      { label: '覆盖', value: '2 个包' }
     ]
   },
   {
@@ -269,11 +251,11 @@ export const MECHANISMS = [
     icon: 'layers',
     group: '复盘',
     summary: '每个能力包拆成多个独立结构文件，支持按模块加载与单独迭代，而不是一个大而全的提示词。',
-    scope: '6 个能力包 · 合计 24 个结构文件',
+    scope: PLATFORMS + ' 个能力包 · 合计 ' + TOTAL_STRUCT + ' 个结构文件',
     tags: ['模块化', '可迭代', '结构文件'],
     metrics: [
-      { label: '结构文件', value: '24 个' },
-      { label: '总体量', value: '1567 KB' }
+      { label: '结构文件', value: TOTAL_STRUCT + ' 个' },
+      { label: '总体量', value: TOTAL_KB + ' KB' }
     ]
   }
 ];
@@ -288,16 +270,12 @@ export const MECH_GROUPS = ['口径', '流程', '复盘'];
 export const INSIGHTS = {
   totals: [
     { label: 'Skills', value: SKILLS.length, unit: '个', hint: '已沉淀并可调用' },
-    { label: '覆盖平台', value: PLATFORMS, unit: '个', hint: '国内电商 4 · 跨境电商 2' },
-    { label: '结构文件', value: TOTAL_STRUCT, unit: '个', hint: '跨 6 个能力包' },
+    { label: '覆盖平台', value: PLATFORMS, unit: '个', hint: GROUP_HINT },
+    { label: '结构文件', value: TOTAL_STRUCT, unit: '个', hint: '跨 ' + PLATFORMS + ' 个能力包' },
     { label: '能力包体积', value: TOTAL_KB, unit: 'KB', hint: '结构化知识总量' }
   ],
-  // 环形图：按能力类型（与筛选用的 platform 分组是两个维度）
-  categories: [
-    { label: '店铺运营', value: 3 },
-    { label: '跨境运营', value: 2 },
-    { label: '投流操盘', value: 1 }
-  ],
+  // 环形图：按能力类型（每条 SKILLS 的 category 字段聚合，与筛选用的 group 是两个维度）
+  categories: CATEGORIES,
   // 柱状图：各能力包体积（KB）
   bySize: SKILLS.map((s) => ({ label: s.short, value: s.size })),
   // 条形排行：结构文件数
@@ -333,12 +311,12 @@ export const TIMELINE = [
   {
     when: '2026.09',
     what: '能力包结构统一',
-    note: '6 个平台能力包统一为「诊断 → 方案 → 核验」的三段式结构，共 24 个结构文件、1567 KB。'
+    note: '4 个平台能力包统一为「诊断 → 方案 → 核验」的三段式结构，共 16 个结构文件、1071 KB。'
   },
   {
     when: '2026.08',
-    what: '京东 / TikTok Shop 升到 v0.2.0',
-    note: '京东补千次展现成本、预算节奏与放量前数据质量门；TikTok Shop 补真人种草视频证据提取与泰国 / 美国市场改编。'
+    what: '京东升到 v0.2.0',
+    note: '京东补千次展现成本、预算节奏与放量前数据质量门，「数据质量门」由此成为跨能力包的固定动作。'
   },
   {
     when: '2026.07',
@@ -349,7 +327,7 @@ export const TIMELINE = [
 
 export const ABOUT = {
   paragraphs: [
-    '我的主线是电商运营：天猫、拼多多、京东、抖音千川四条国内链路，加 TikTok Shop 与亚马逊两条跨境链路。这六个平台里反复出现的判断——选品定价、冷启动、放量止损、利润口径、合规履约——我把它们逐条写成了可复用的能力包。',
+    '我的主线是国内电商运营：天猫、拼多多、京东、抖音千川四条链路。这四个平台里反复出现的判断——选品定价、冷启动、放量止损、利润口径、合规履约——我把它们逐条写成了可复用的能力包。',
     '方法论上，我坚持「先定口径、再做诊断、最后给动作」。所有能力包都以真实利润（而非 GMV）为第一口径，方案里必须包含证据来源与时效，以及放量前需要满足的数据质量门。',
     '正在做的事：把「策略决策」与「受控执行」拆成两层，让 Agent 只负责取数、核验与回读，真正的写入动作限制在明确授权边界内。'
   ],

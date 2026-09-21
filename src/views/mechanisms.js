@@ -1,6 +1,6 @@
 import { h, clear } from '../core/dom.js';
 import { sectionHead, iconBadge, chip, emptyState } from '../core/ui.js';
-import { MECHANISMS, MECH_GROUPS } from '../data/content.js';
+import { MECHANISMS, MECH_GROUPS, SKILLS } from '../data/content.js';
 
 function mechCard(item) {
   const card = h('article.card.mech-card.reveal');
@@ -37,7 +37,7 @@ export function render(ctx) {
     sectionHead({
       eyebrow: 'MECHANISM',
       title: '运行机制',
-      desc: '这 6 个能力包不是六套各写各的提示词 —— 它们共享同一套判断机制。下面是反复出现在各个平台里的固定动作，每一条都能在能力包里找到对应位置。',
+      desc: '这 ' + SKILLS.length + ' 个能力包不是各写各的提示词 —— 它们共享同一套判断机制。下面是反复出现在各个平台里的固定动作，每一条都能在能力包里找到对应位置。',
       counter: '共 ' + MECHANISMS.length + ' 项 · 按作用分组'
     })
   );

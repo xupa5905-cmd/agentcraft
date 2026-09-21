@@ -74,7 +74,7 @@ export function render() {
     h(
       'p',
       { style: { marginTop: '10px', fontSize: 'var(--t-xs)', color: 'var(--ink-3)', lineHeight: '1.7' } },
-      '把 6 个能力包按结构文件数从小到大排列后逐项累加，用于说明整体体量的分布，而不是追求增长曲线。'
+      '把 ' + INSIGHTS.roster.length + ' 个能力包按结构文件数从小到大排列后逐项累加，用于说明整体体量的分布，而不是追求增长曲线。'
     )
   );
 
