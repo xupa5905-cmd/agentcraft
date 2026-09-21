@@ -1,0 +1,13 @@
+{
+  "name": "agentcraft",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "description": "零依赖静态作品集：全平台电商运营 Skill 矩阵与结构数据看板",
+  "scripts": {
+    "start": "node server.mjs",
+    "check": "node scripts/check.mjs && node scripts/render-check.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/build.mjs && node server.mjs --root dist"
+  }
+}

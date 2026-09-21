@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark light" />
+<title>电商运营 Skill 作品集 · Skills &amp; 数据看板</title>
+<meta name="description" content="全平台电商运营能力包作品集：6 个平台 Skill（天猫 / 拼多多 / 京东 / 抖音千川 / TikTok Shop / 亚马逊）的能力矩阵、结构数据与运行方式。" />
+<meta name="author" content="你的名字" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="电商运营 Skill 作品集 · Skills &amp; 数据看板" />
+<meta property="og:description" content="6 个平台、24 个结构文件、1567 KB 结构化运营能力包：以真实利润为第一口径，先诊断再给方案。" />
+<meta property="og:url" content="%SITE_URL%/" />
+<meta name="twitter:card" content="summary" />
+<link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+<script>
+(function () {
+  var KEY = 'aip.theme.v1';
+  var t = 'dark';
+  try {
+    var saved = window.localStorage.getItem(KEY);
+    if (saved === 'light' || saved === 'dark') t = saved;
+  } catch (e) { /* storage blocked, keep default */ }
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+<link rel="stylesheet" href="./styles/tokens.css" />
+<link rel="stylesheet" href="./styles/base.css" />
+<link rel="stylesheet" href="./styles/layout.css" />
+<link rel="stylesheet" href="./styles/components.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主内容</a>
+<div class="bg-fx" aria-hidden="true">
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow-a"></div>
+  <div class="bg-glow bg-glow-b"></div>
+  <div class="bg-glow bg-glow-c"></div>
+  <div class="bg-scan"></div>
+</div>
+<div id="cursor-glow" class="cursor-glow" aria-hidden="true"></div>
+<div id="app"></div>
+<noscript>
+  <p style="padding:32px;font:15px/1.7 system-ui,sans-serif;color:#e9edfb;background:#06070e">
+    本页面由 ES Module 驱动，请启用 JavaScript 后访问。
+  </p>
+</noscript>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

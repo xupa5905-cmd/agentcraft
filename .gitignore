@@ -1,0 +1,15 @@
+# 构建产物
+dist/
+
+# 依赖与缓存
+node_modules/
+.cache/
+
+# 本地预览日志
+*.log
+
+# 编辑器 / 系统
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
