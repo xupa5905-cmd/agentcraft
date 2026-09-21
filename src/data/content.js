@@ -17,8 +17,8 @@ export const META = {
 };
 
 export const PROFILE = {
-  name: 'xupa5905-cmd',
-  initials: 'XC',
+  name: 'Mr. Xu',
+  initials: 'XU',
   role: '全平台电商运营 · 结构化 Skill 工程',
   status: 'OPEN TO COLLABORATION',
   tagline: [
