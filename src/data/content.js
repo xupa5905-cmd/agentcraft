@@ -39,8 +39,9 @@ export const PROFILE = {
 
 export const NAV = [
   { id: 'hero', label: '首页' },
-  { id: 'skills', label: '能力' },
-  { id: 'agents', label: '机制' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'agents', label: 'Agent' },
+  { id: 'mechanisms', label: '机制' },
   { id: 'insights', label: '数据' },
   { id: 'about', label: '关于' },
   { id: 'contact', label: '联系' }
@@ -172,6 +173,29 @@ PROFILE.stats = [
   { value: SKILLS.length, suffix: '', label: '在维护的 Skill' },
   { value: PLATFORMS, suffix: '', label: '覆盖电商平台' },
   { value: TOTAL_KB, suffix: 'KB', label: '能力包总体量' }
+];
+
+/**
+ * Agent 区 —— 目前是 **6 个占位卡片**，还没填内容。
+ * 一排三个（共两排），卡片上显示「占位 · 待补充」。
+ *
+ * 怎么填：把某一条的 `placeholder` 改成 false，再把下面的字段补上即可，
+ * 卡片会自动从「骨架占位」变成正常卡片，视图层不用动。
+ *   name       卡片标题，例如「选品定价 Agent」
+ *   role       卡片副标题，一句话定位
+ *   desc       正文，2-3 句说明
+ *   highlights 数组，3-4 条能力点
+ *   tags       数组，标签
+ *   status     右上角小标签，例如「规划中」/「内测」/「已上线」
+ *   icon       取值见 src/core/icons.js，默认 bot
+ */
+export const AGENTS = [
+  { id: 'agent-01', placeholder: true, icon: 'bot', name: '', role: '', desc: '', highlights: [], tags: [], status: '' },
+  { id: 'agent-02', placeholder: true, icon: 'bot', name: '', role: '', desc: '', highlights: [], tags: [], status: '' },
+  { id: 'agent-03', placeholder: true, icon: 'bot', name: '', role: '', desc: '', highlights: [], tags: [], status: '' },
+  { id: 'agent-04', placeholder: true, icon: 'bot', name: '', role: '', desc: '', highlights: [], tags: [], status: '' },
+  { id: 'agent-05', placeholder: true, icon: 'bot', name: '', role: '', desc: '', highlights: [], tags: [], status: '' },
+  { id: 'agent-06', placeholder: true, icon: 'bot', name: '', role: '', desc: '', highlights: [], tags: [], status: '' }
 ];
 
 /**

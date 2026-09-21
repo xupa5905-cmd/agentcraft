@@ -386,7 +386,7 @@ assert(typeof main.boot === 'function', 'main.js 导出 boot()');
 
 main.boot();
 
-const SECTIONS = ['hero', 'skills', 'agents', 'insights', 'about', 'contact'];
+const SECTIONS = ['hero', 'skills', 'agents', 'mechanisms', 'insights', 'about', 'contact'];
 
 const skillGroups = [];
 for (const s of content.SKILLS) if (skillGroups.indexOf(s.group) < 0) skillGroups.push(s.group);
@@ -414,6 +414,14 @@ const mechCards = app.querySelectorAll('.mech-card');
 assert(skillCards.length === EXPECT.skills, 'Skill 卡片数量 ' + skillCards.length + '/' + EXPECT.skills);
 assert(mechCards.length === EXPECT.mechs, '机制卡片数量 ' + mechCards.length + '/' + EXPECT.mechs);
 
+const agentCards = app.querySelectorAll('.agent-card');
+const agentPending = content.AGENTS.filter((a) => a.placeholder).length;
+assert(agentCards.length === content.AGENTS.length, 'Agent 卡片数量 ' + agentCards.length + '/' + content.AGENTS.length);
+assert(
+  app.querySelectorAll('.agent-card.is-placeholder').length === agentPending,
+  'Agent 占位卡片 ' + app.querySelectorAll('.agent-card.is-placeholder').length + '/' + agentPending
+);
+
 const iconSvgs = app.querySelectorAll('.icon-badge');
 assert(iconSvgs.length >= EXPECT.badges, '内联 SVG 图标角标 ' + iconSvgs.length + ' 个（期望 ≥ ' + EXPECT.badges + '）');
 let iconPathCount = 0;
@@ -439,7 +447,7 @@ for (const a of linkTargets) if (a.getAttribute('href')) linkHrefCount += 1;
 assert(linkHrefCount === linkTargets.length, '每个外链都有 href', linkHrefCount + '/' + linkTargets.length);
 
 const navLinks = app.querySelectorAll('.nav-link');
-assert(navLinks.length >= 6, '导航条目 ' + navLinks.length + ' 个');
+assert(navLinks.length >= content.NAV.length, '导航条目 ' + navLinks.length + ' 个');
 
 const bars0 = app.querySelectorAll('.filter-bar');
 assert(bars0.length === 2, '筛选栏数量 ' + bars0.length);
@@ -496,6 +504,6 @@ if (failures.length) {
   process.exit(1);
 }
 
-report.push('全部通过。6 个区块 / ' + filterCombos + ' 个筛选状态均渲染出内容，');
+report.push('全部通过。' + SECTIONS.length + ' 个区块 / ' + filterCombos + ' 个筛选状态均渲染出内容，');
 report.push('内联 SVG 图标与手写图表均有实际图元，进场动画与进度条已激活。');
 process.stdout.write(report.join('\n') + '\n');

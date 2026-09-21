@@ -582,3 +582,59 @@
 .orb-spin-3 { animation: orbspin 31s linear infinite; }
 .orb-runner { fill: var(--accent-3); }
 @keyframes orbspin { to { transform: rotate(360deg) } }
+
+/* ---------- Agent 区：预留位置（占位骨架卡片） ---------- */
+
+.agent-card.is-placeholder {
+  border-style: dashed;
+  border-color: var(--line-2);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.agent-card.is-placeholder::before { content: none; }
+.agent-card.is-placeholder:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--line-3);
+  background: color-mix(in srgb, var(--accent) 3%, transparent);
+}
+.agent-card.is-placeholder .card-title { color: var(--ink-3); }
+.agent-card.is-placeholder .card-sub { color: var(--ink-4); }
+.agent-card.is-placeholder .icon-badge {
+  border-style: dashed;
+  border-color: var(--line-2);
+  background: transparent;
+  color: var(--ink-4);
+}
+.agent-card.is-placeholder .chip {
+  border-style: dashed;
+  background: transparent;
+  color: var(--ink-4);
+}
+
+.skel-body {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin: var(--sp-4) 0 var(--sp-3);
+}
+.skel-line {
+  display: block;
+  height: 8px;
+  border-radius: var(--r-pill);
+  background: linear-gradient(90deg, var(--line) 0%, var(--line-3) 50%, var(--line) 100%);
+  background-size: 240% 100%;
+  animation: skelslide 2.6s linear infinite;
+}
+@keyframes skelslide {
+  from { background-position: 120% 0; }
+  to   { background-position: -120% 0; }
+}
+
+.agent-hint {
+  margin-bottom: var(--sp-3);
+  font-size: var(--t-xs);
+  line-height: 1.7;
+  color: var(--ink-4);
+}

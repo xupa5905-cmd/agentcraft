@@ -30,7 +30,7 @@ function mechCard(item) {
 }
 
 export function render(ctx) {
-  const section = h('section.section', { id: 'agents' });
+  const section = h('section.section', { id: 'mechanisms' });
   const wrap = h('div.wrap');
 
   wrap.appendChild(
