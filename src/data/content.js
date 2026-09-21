@@ -150,7 +150,7 @@ const TOTAL_KB = SKILLS.reduce((a, s) => a + s.size, 0);
 const TOTAL_STRUCT = SKILLS.reduce((a, s) => a + s.structFiles, 0);
 const PLATFORMS = SKILLS.length;
 
-/** 按 group 统计（国内电商 / 跨境电商等），供看板提示文案自动生成 */
+/** 按 group 字段统计（如「国内电商」），供看板提示文案自动生成 */
 const GROUP_COUNTS = SKILLS.reduce((acc, s) => {
   acc[s.group] = (acc[s.group] || 0) + 1;
   return acc;
