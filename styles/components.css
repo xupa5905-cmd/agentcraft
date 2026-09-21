@@ -261,7 +261,8 @@
 @keyframes sheen { 0% { transform: translateX(-100%) } 60%, 100% { transform: translateX(100%) } }
 
 /* ---------- agent card ---------- */
-.agent-card { display: flex; flex-direction: column; gap: var(--sp-3); }
+/* Agent 卡片直接复用 .card（保持与 Skills 卡片完全一致的排版节奏）；
+   其「预留占位」态样式见文件末尾「Agent 区：预留位置」一节。 */
 
 /* ---------- mechanism card ---------- */
 .mech-card { display: flex; flex-direction: column; }
