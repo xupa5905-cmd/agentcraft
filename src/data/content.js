@@ -10,7 +10,6 @@
 
 export const META = {
   siteName: 'AI PORTFOLIO',
-  owner: 'xupa5905-cmd',
   version: '0.2.0',
   builtAt: '2026-09',
   stack: '零依赖 · 原生 ES Modules · 内联 SVG'
@@ -36,7 +35,6 @@ export const PROFILE = {
     { value: 1567, suffix: 'KB', label: '能力包总体量' }
   ],
   links: [
-    { label: 'GitHub', href: 'https://github.com/xupa5905-cmd', icon: 'code' },
     { label: '邮箱', href: 'mailto:xupa5905@gmail.com', icon: 'mail' },
     { label: '更多', href: '#contact', icon: 'link' }
   ]
@@ -379,17 +377,13 @@ export const CONTACT = {
   desc: '如果你在做电商运营、想把手上的判断流程沉淀成 Skill，或者想聊聊 Agent 的受控执行怎么做，都欢迎直接找我。',
   lines: [
     { icon: 'mail', label: '邮箱', value: 'xupa5905@gmail.com', href: 'mailto:xupa5905@gmail.com' },
-    { icon: 'code', label: 'GitHub', value: 'github.com/xupa5905-cmd', href: 'https://github.com/xupa5905-cmd' },
     { icon: 'pin', label: '坐标', value: '中国', href: null }
   ],
   terminal: {
     title: 'contact.sh',
     lines: [
       [{ t: 'c', v: '# 最快的方式：直接发邮件' }],
-      [{ t: 'p', v: '$ ' }, { t: 's', v: 'mail -s "合作" ' }, { t: 'k', v: 'xupa5905@gmail.com' }],
-      [],
-      [{ t: 'c', v: '# 或者在 GitHub 上找我' }],
-      [{ t: 'p', v: '$ ' }, { t: 's', v: 'open ' }, { t: 'k', v: 'https://github.com/xupa5905-cmd' }]
+      [{ t: 'p', v: '$ ' }, { t: 's', v: 'mail -s "合作" ' }, { t: 'k', v: 'xupa5905@gmail.com' }]
     ]
   }
 };

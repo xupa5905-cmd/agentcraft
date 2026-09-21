@@ -62,7 +62,7 @@ function buildShell() {
 
   const foot = h('footer.site-foot');
   const footInner = h('div.wrap.foot-inner');
-  footInner.appendChild(h('span', null, META.owner + '  ·  ' + META.siteName));
+  footInner.appendChild(h('span', null, PROFILE.name + '  ·  ' + META.siteName));
   footInner.appendChild(
     h('span.foot-meta', null, 'v' + META.version + '  ·  ' + META.builtAt + '  ·  ' + META.stack)
   );

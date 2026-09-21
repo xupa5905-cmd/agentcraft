@@ -34,12 +34,6 @@ export function render() {
   if (primary) {
     cta.appendChild(h('a.btn.btn--primary', { href: primary.href }, '发一封邮件', icon('mail', 16)));
   }
-  const gh = CONTACT.lines.find((l) => l.href && l.href.indexOf('http') === 0);
-  if (gh) {
-    cta.appendChild(
-      h('a.btn', { href: gh.href, target: '_blank', rel: 'noopener noreferrer' }, '打开 GitHub', icon('code', 16))
-    );
-  }
   left.appendChild(cta);
 
   const leftPanel = panel('联系方式', null, left);
