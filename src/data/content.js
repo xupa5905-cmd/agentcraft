@@ -10,15 +10,15 @@
 
 export const META = {
   siteName: 'AI PORTFOLIO',
-  owner: '你的名字',
+  owner: 'xupa5905-cmd',
   version: '0.2.0',
   builtAt: '2026-09',
   stack: '零依赖 · 原生 ES Modules · 内联 SVG'
 };
 
 export const PROFILE = {
-  name: '你的名字',
-  initials: 'YN',
+  name: 'xupa5905-cmd',
+  initials: 'XC',
   role: '全平台电商运营 · 结构化 Skill 工程',
   status: 'OPEN TO COLLABORATION',
   tagline: [
@@ -28,7 +28,7 @@ export const PROFILE = {
   ],
   intro:
     '我把电商运营里反复出现的判断，沉淀成 6 个边界清晰的能力包：先做诊断、再给方案，覆盖国内与跨境主流平台的选品定价、冷启动、投流操盘、利润与合规。',
-  location: '中国 · 城市',
+  location: '中国',
   email: 'xupa5905@gmail.com',
   stats: [
     { value: 6, suffix: '', label: '在维护的 Skill' },
@@ -45,7 +45,7 @@ export const PROFILE = {
 export const NAV = [
   { id: 'hero', label: '首页' },
   { id: 'skills', label: '能力' },
-  { id: 'agents', label: 'Agent' },
+  { id: 'agents', label: '机制' },
   { id: 'insights', label: '数据' },
   { id: 'about', label: '关于' },
   { id: 'contact', label: '联系' }
@@ -195,110 +195,93 @@ const TOTAL_STRUCT = SKILLS.reduce((a, s) => a + s.structFiles, 0);
 const PLATFORMS = SKILLS.length;
 
 /**
- * Agent 作品：status 取 live / beta / lab
- * 说明：以下为占位结构，等你给出真实 Agent 清单后直接替换即可。
+ * 运行机制 —— 6 个能力包共享的、反复出现的判断动作。
+ * 全部从 SKILLS 里真实存在的机制提炼，不含虚构条目。
+ * group 用于筛选：口径 / 流程 / 复盘
  */
-export const AGENTS = [
+export const MECHANISMS = [
   {
-    id: 'agent-1',
-    name: '示例 Agent 一',
-    icon: 'bot',
-    status: 'live',
-    summary: '一句话说明这个 Agent 替谁解决了什么问题。',
-    problem: '它接手前，这件事需要人工重复做 N 次、每次约 M 分钟。现在交给它自动完成。',
-    stack: ['Node', 'LLM', 'Cron'],
+    id: 'profit-first',
+    name: '真实利润口径',
+    icon: 'target',
+    group: '口径',
+    summary: '所有能力包都以真实利润为第一口径，而不是 GMV 或成交额。口径不统一时，后面的优化全是错的。',
+    scope: '适用于全部 6 个能力包',
+    tags: ['真实利润', '退款后利润', '净成交 ROI'],
     metrics: [
-      { label: '状态', value: '已上线' },
-      { label: '周期', value: '每日' },
-      { label: '省时', value: '约 6h/周' }
-    ],
-    links: [
-      { label: 'Demo', href: '#', icon: 'arrowOut' },
-      { label: '仓库', href: '#', icon: 'code' }
+      { label: '覆盖', value: '6 / 6 个包' },
+      { label: '首要指标', value: '真实利润' }
     ]
   },
   {
-    id: 'agent-2',
-    name: '示例 Agent 二',
-    icon: 'network',
-    status: 'live',
-    summary: '一句话说明它的触发条件和主要动作。',
-    problem: '描述它替代的人工流程，以及你如何判断它做对了。',
-    stack: ['Python', 'LLM', 'Webhook'],
+    id: 'diagnose-first',
+    name: '先诊断，再给动作',
+    icon: 'search',
+    group: '流程',
+    summary: '不直接给方案。先用固定维度做一次诊断，再据此推导动作 —— TikTok Shop 用国家 / 主体 / 店型 / 阶段 / 证据时效五个维度。',
+    scope: 'TikTok Shop 五维诊断 · 亚马逊店铺诊断 · 拼多多跨域诊断 · 京东合规诊断',
+    tags: ['五维诊断', '店铺诊断', '跨域诊断'],
     metrics: [
-      { label: '状态', value: '已上线' },
-      { label: '周期', value: '事件触发' },
-      { label: '准确率', value: '约 94%' }
-    ],
-    links: [{ label: 'Demo', href: '#', icon: 'arrowOut' }]
+      { label: '诊断维度', value: '5 个' },
+      { label: '覆盖', value: '4 个包' }
+    ]
   },
   {
-    id: 'agent-3',
-    name: '示例 Agent 三',
-    icon: 'eye',
-    status: 'beta',
-    summary: '一句话说明它观察什么、输出什么判断。',
-    problem: '描述它监控的指标和告警方式。',
-    stack: ['Browser', 'LLM', 'SQLite'],
+    id: 'data-gate',
+    name: '放量前数据质量门',
+    icon: 'shield',
+    group: '流程',
+    summary: '任何放量动作之前必须先过数据质量门：数据不达标就不放量，避免在脏数据上放大错误决策。',
+    scope: '京东 v0.2.0 新增 · 千川数据质量核验',
+    tags: ['数据质量门', '放量前置', '取数核验'],
     metrics: [
-      { label: '状态', value: '内测中' },
-      { label: '周期', value: '每 15 分钟' },
-      { label: '覆盖', value: '12 个源' }
-    ],
-    links: [{ label: '仓库', href: '#', icon: 'code' }]
+      { label: '引入版本', value: '京东 v0.2.0' },
+      { label: '作用点', value: '放量之前' }
+    ]
   },
   {
-    id: 'agent-4',
-    name: '示例 Agent 四',
-    icon: 'flow',
-    status: 'beta',
-    summary: '一句话说明它在流水线里的位置。',
-    problem: '描述上游输入和下游消费方。',
-    stack: ['Node', 'Queue', 'LLM'],
+    id: 'controlled-exec',
+    name: '策略与执行分离',
+    icon: 'bot',
+    group: '流程',
+    summary: '千川能力包拆成两个 Skill：一个只做策略决策，另一个通过官方 API 受控执行。写入动作被限制在明确授权边界内。',
+    scope: '抖音千川 AI 托管操盘专家',
+    tags: ['双 Skill', '官方 API', '授权边界'],
     metrics: [
-      { label: '状态', value: '内测中' },
-      { label: '周期', value: '每小时' },
-      { label: '吞吐', value: '约 400/次' }
-    ],
-    links: [{ label: 'Demo', href: '#', icon: 'arrowOut' }]
+      { label: '结构', value: '2 个 Skill' },
+      { label: '分工', value: '决策 + 执行' }
+    ]
   },
   {
-    id: 'agent-5',
-    name: '示例 Agent 五',
-    icon: 'target',
-    status: 'lab',
-    summary: '一句话说明你在验证什么假设。',
-    problem: '描述它目前的局限，以及它还没上线的原因。',
-    stack: ['实验性', 'LLM'],
+    id: 'attribution',
+    name: '归因核验与恢复基线',
+    icon: 'chart',
+    group: '复盘',
+    summary: '用同 SKU 归因核验判断动作是否真的起效，并给出活动恢复期基线，避免把自然波动误判成优化效果。',
+    scope: '京东 v0.2.0 · 活动与投放复盘',
+    tags: ['同 SKU 归因', '恢复期基线', '复盘'],
     metrics: [
-      { label: '状态', value: '实验中' },
-      { label: '周期', value: '手动' },
-      { label: '进度', value: '约 40%' }
-    ],
-    links: [{ label: '笔记', href: '#', icon: 'book' }]
+      { label: '方法', value: '同 SKU 对比' },
+      { label: '产出', value: '恢复基线' }
+    ]
   },
   {
-    id: 'agent-6',
-    name: '示例 Agent 六',
-    icon: 'spark',
-    status: 'lab',
-    summary: '一句话说明它的目标场景。',
-    problem: '描述它面临的真实约束。',
-    stack: ['实验性', 'RAG'],
+    id: 'structure',
+    name: '结构文件分层',
+    icon: 'layers',
+    group: '复盘',
+    summary: '每个能力包拆成多个独立结构文件，支持按模块加载与单独迭代，而不是一个大而全的提示词。',
+    scope: '6 个能力包 · 合计 24 个结构文件',
+    tags: ['模块化', '可迭代', '结构文件'],
     metrics: [
-      { label: '状态', value: '实验中' },
-      { label: '周期', value: '按需' },
-      { label: '进度', value: '约 25%' }
-    ],
-    links: [{ label: '笔记', href: '#', icon: 'book' }]
+      { label: '结构文件', value: '24 个' },
+      { label: '总体量', value: '1567 KB' }
+    ]
   }
 ];
 
-export const STATUS_LABEL = {
-  live: { kind: 'live', text: '已上线' },
-  beta: { kind: 'beta', text: '内测中' },
-  lab: { kind: 'lab', text: '实验中' }
-};
+/** 机制分组，用于筛选栏 */
+export const MECH_GROUPS = ['口径', '流程', '复盘'];
 
 /**
  * 数据看板 —— 全部由 SKILLS 真实字段推导，不引入估算值。
@@ -397,7 +380,7 @@ export const CONTACT = {
   lines: [
     { icon: 'mail', label: '邮箱', value: 'xupa5905@gmail.com', href: 'mailto:xupa5905@gmail.com' },
     { icon: 'code', label: 'GitHub', value: 'github.com/xupa5905-cmd', href: 'https://github.com/xupa5905-cmd' },
-    { icon: 'pin', label: '坐标', value: '中国 · 城市', href: null }
+    { icon: 'pin', label: '坐标', value: '中国', href: null }
   ],
   terminal: {
     title: 'contact.sh',

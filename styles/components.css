@@ -263,6 +263,26 @@
 /* ---------- agent card ---------- */
 .agent-card { display: flex; flex-direction: column; gap: var(--sp-3); }
 
+/* ---------- mechanism card ---------- */
+.mech-card { display: flex; flex-direction: column; }
+
+/* ---------- hero links ---------- */
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin-top: var(--sp-4);
+}
+.mech-scope {
+  margin-top: var(--sp-3);
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px dashed var(--line-2);
+  font-size: var(--t-xs);
+  line-height: 1.7;
+  color: var(--ink-3);
+}
+
 .agent-meta {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));

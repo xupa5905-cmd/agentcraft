@@ -1,5 +1,6 @@
 import { h, s } from '../core/dom.js';
 import { icon } from '../core/icons.js';
+import { linkInline } from '../core/ui.js';
 import { PROFILE } from '../data/content.js';
 
 const TAU = Math.PI * 2;
@@ -123,7 +124,7 @@ export function render() {
 
   const actions = h('div.hero-actions.reveal');
   actions.appendChild(
-    h('a.btn.btn--primary', { href: '#agents' }, '查看 Agent 作品', icon('arrowDown', 16))
+    h('a.btn.btn--primary', { href: '#skills' }, '查看能力矩阵', icon('arrowDown', 16))
   );
   actions.appendChild(h('a.btn', { href: '#contact' }, '联系方式', icon('mail', 16)));
   left.appendChild(actions);
@@ -138,6 +139,10 @@ export function render() {
     stats.appendChild(cell);
   }
   left.appendChild(stats);
+
+  const links = h('div.hero-links.reveal');
+  for (const l of PROFILE.links) links.appendChild(linkInline(l.label, l.href, l.icon));
+  left.appendChild(links);
 
   const cue = h('div.scroll-cue.reveal');
   cue.appendChild(h('i'));

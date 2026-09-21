@@ -13,12 +13,12 @@ import {
 } from './core/motion.js';
 import * as hero from './views/hero.js';
 import * as skills from './views/skills.js';
-import * as agents from './views/agents.js';
+import * as mechanisms from './views/mechanisms.js';
 import * as insights from './views/insights.js';
 import * as about from './views/about.js';
 import * as contact from './views/contact.js';
 
-const VIEWS = [hero, skills, agents, insights, about, contact];
+const VIEWS = [hero, skills, mechanisms, insights, about, contact];
 
 const ctx = {
   afterRender(node) {

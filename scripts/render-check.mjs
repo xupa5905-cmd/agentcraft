@@ -390,13 +390,13 @@ const SECTIONS = ['hero', 'skills', 'agents', 'insights', 'about', 'contact'];
 
 const skillGroups = [];
 for (const s of content.SKILLS) if (skillGroups.indexOf(s.group) < 0) skillGroups.push(s.group);
-const statusKeys = Object.keys(content.STATUS_LABEL);
 const EXPECT = {
   skills: content.SKILLS.length,
-  agents: content.AGENTS.length,
-  badges: content.SKILLS.length + content.AGENTS.length + content.ABOUT.principles.length,
+  mechs: content.MECHANISMS.length,
+  badges: content.SKILLS.length + content.MECHANISMS.length + content.ABOUT.principles.length,
   meters: content.SKILLS.length,
-  filters: skillGroups.length + 1 + statusKeys.length + 1
+  filters: skillGroups.length + 1 + content.MECH_GROUPS.length + 1,
+  links: content.PROFILE.links.length + content.CONTACT.lines.filter((l) => l.href).length
 };
 
 assert(app.countText() > 600, '首屏渲染出足量文本', app.countText() + ' 字符');
@@ -410,9 +410,9 @@ for (const id of SECTIONS) {
 }
 
 const skillCards = app.querySelectorAll('.skill-card');
-const agentCards = app.querySelectorAll('.agent-card');
+const mechCards = app.querySelectorAll('.mech-card');
 assert(skillCards.length === EXPECT.skills, 'Skill 卡片数量 ' + skillCards.length + '/' + EXPECT.skills);
-assert(agentCards.length === EXPECT.agents, 'Agent 卡片数量 ' + agentCards.length + '/' + EXPECT.agents);
+assert(mechCards.length === EXPECT.mechs, '机制卡片数量 ' + mechCards.length + '/' + EXPECT.mechs);
 
 const iconSvgs = app.querySelectorAll('.icon-badge');
 assert(iconSvgs.length >= EXPECT.badges, '内联 SVG 图标角标 ' + iconSvgs.length + ' 个（期望 ≥ ' + EXPECT.badges + '）');
@@ -433,7 +433,10 @@ for (const wrap of chartSvgs) {
 assert(chartShapeCount === chartSvgs.length, '每个图表都有实际图元', chartShapeCount + '/' + chartSvgs.length);
 
 const linkTargets = app.querySelectorAll('a.link-inline');
-assert(linkTargets.length >= 9, '外链条目 ' + linkTargets.length + ' 个');
+assert(linkTargets.length >= EXPECT.links, '外链条目 ' + linkTargets.length + ' 个（期望 ≥ ' + EXPECT.links + '）');
+let linkHrefCount = 0;
+for (const a of linkTargets) if (a.getAttribute('href')) linkHrefCount += 1;
+assert(linkHrefCount === linkTargets.length, '每个外链都有 href', linkHrefCount + '/' + linkTargets.length);
 
 const navLinks = app.querySelectorAll('.nav-link');
 assert(navLinks.length >= 6, '导航条目 ' + navLinks.length + ' 个');
